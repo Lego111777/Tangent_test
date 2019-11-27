@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Employee, Leave
 from datetime import datetime
 
+
 class EmployeeSerializer(serializers.ModelSerializer):
     '''
     Basic serializer made for any future use of the employees model
@@ -18,7 +19,8 @@ class LeaveSerializer(serializers.ModelSerializer):
     '''
     class Meta:
         model = Leave
-        fields = ['employee_pk', 'start_date', 'end_date', 'days_of_leave', 'status']
+        fields = ['employee_pk', 'start_date',
+                  'end_date', 'days_of_leave', 'status']
 
     def validate(self, data):
         """
@@ -30,6 +32,7 @@ class LeaveSerializer(serializers.ModelSerializer):
         leave_days.split(" ")
         if data['start_date'] > data['end_date']:
             raise serializers.ValidationError("finish must occur after start")
-        if  leave_days[0] != data['days_of_leave']:
-            raise serializers.ValidationError("date difference does not amount to days of leave requested {}".format(leave_days))
+        if leave_days[0] != data['days_of_leave']:
+            raise serializers.ValidationError(
+                "date difference does not amount to days of leave requested {}".format(leave_days))
         return data

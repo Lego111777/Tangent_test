@@ -5,7 +5,6 @@ from .models import Employee, Leave
 from .serializers import EmployeeSerializer, LeaveSerializer
 
 
-
 class ListEmployeesView(generics.ListAPIView):
     '''
     Basic view to list all employees
