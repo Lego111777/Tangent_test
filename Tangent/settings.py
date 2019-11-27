@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls',
     'rest_framework',
+    'rest_framework_swagger',
     'LeaveLogger.apps.LeaveloggerConfig',
 ]
 
@@ -68,6 +70,9 @@ TEMPLATES = [
         },
     },
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
+
 
 WSGI_APPLICATION = 'Tangent.wsgi.application'
 

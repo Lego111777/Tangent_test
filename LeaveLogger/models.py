@@ -19,13 +19,16 @@ class Employee(models.Model):
     def __str__(self):
         return "{}".format(self.emp_number)
 
+
 class Leave(models.Model):
     leave = models.Manager()
     employee_pk = models.ForeignKey(Employee, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
     days_of_leave = models.CharField(max_length=30)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='new')
 
     def __str__(self):
-        return "{} ({}) to ({})".format(self.employee_pk, self.start_date, self.end_date)
+        return "{} ({}) to ({})".format(
+            self.employee_pk, self.start_date, self.end_date)

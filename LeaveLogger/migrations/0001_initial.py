@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Employee',
             fields=[
-                ('emp_number', models.CharField(max_length=10, primary_key=True, serialize=False)),
+                ('emp_number', models.CharField(
+                    max_length=10, primary_key=True, serialize=False)),
                 ('phone_number', models.CharField(max_length=15)),
                 ('first_name', models.CharField(max_length=30)),
                 ('last_name', models.CharField(max_length=30)),
@@ -28,12 +29,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Leave',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('start_date', models.DateField()),
                 ('end_date', models.DateField()),
                 ('days_of_leave', models.IntegerField()),
-                ('status', models.CharField(choices=[('new', 'New'), ('app', 'Approved'), ('decl', 'Declined')], default='new', max_length=10)),
-                ('employee_pk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='LeaveLogger.Employee')),
+                ('status', models.CharField(choices=[
+                 ('new', 'New'), ('app', 'Approved'), ('decl', 'Declined')], default='new', max_length=10)),
+                ('employee_pk', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='LeaveLogger.Employee')),
             ],
             managers=[
                 ('leave', django.db.models.manager.Manager()),
