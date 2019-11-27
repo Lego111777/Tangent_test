@@ -24,7 +24,7 @@ class Leave(models.Model):
     employee_pk = models.ForeignKey(Employee, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
-    days_of_leave = models.IntegerField()
+    days_of_leave = models.CharField(max_length=30)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
 
     def __str__(self):
