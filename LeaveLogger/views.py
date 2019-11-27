@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Employee, Leave
+from .serializers import EmployeeSerializer, LeaveSerializer
 
-# Create your views here.
+
+
+class ListEmployeesView(generics.ListAPIView):
+    queryset = Employee.employee.all()
+    serializer_class = EmployeeSerializer
+
+
+class PostLeaveView(generics.CreateAPIView):
+    queryset = Leave.leave.all()
+    serializer_class = LeaveSerializer

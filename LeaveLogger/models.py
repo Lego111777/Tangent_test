@@ -10,17 +10,22 @@ STATUS_CHOICES = (
 
 
 class Employee(models.Model):
-    emp_number = models.CharField(max_length=10)
+    employee = models.Manager()
+    emp_number = models.CharField(max_length=10, primary_key=True)
     phone_number = models.CharField(max_length=15)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return "{}".format(self.emp_number)
 
 class Leave(models.Model):
+    leave = models.Manager()
     employee_pk = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     days_of_leave = models.IntegerField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+
+    def __str__(self):
+        return "{} ({}) to ({})".format(self.employee_pk, self.start_date, self.end_date)
