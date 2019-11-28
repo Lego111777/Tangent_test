@@ -2,7 +2,7 @@ This is a Django rest API created for test by Tangent solutions.
 
 To run this project follow the steps.
 
-1   run pip install -r requirements 
+1   run pip install -r requirements.txt 
 
 2   run python manage,py makemigrations LeaveLogger 
 
